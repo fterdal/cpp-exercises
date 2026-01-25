@@ -8,7 +8,39 @@ This repo is a series of exercises to help me refresh C++ knowledge.
 - Conan 2.x
 - C++17 compatible compiler
 
-## Build Instructions
+## Quick Start
+
+```bash
+# Build and run tests (one command!)
+make test
+
+# Run tests in watch mode (auto-reruns on file changes)
+make test-watch
+```
+
+## Available Commands
+
+| Command                   | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `make test`               | Build and run all tests                      |
+| `make test-watch`         | Run tests in watch mode (requires `fswatch`) |
+| `make test-one TEST=Name` | Run a specific test by name                  |
+| `make build`              | Build the project                            |
+| `make run`                | Build and run the main executable            |
+| `make clean`              | Remove build directory                       |
+| `make help`               | Show all available commands                  |
+
+### Watch Mode Setup
+
+For watch mode, install `fswatch`:
+
+```bash
+brew install fswatch
+```
+
+## Manual Build Instructions
+
+If you prefer not to use the Makefile:
 
 ```bash
 # Install dependencies with Conan
