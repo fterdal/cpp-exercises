@@ -1,5 +1,3 @@
 #include "greeting.h"
 
-std::string getGreeting() {
-    return "Hello, World!";
-}
+std::string getGreeting() { return "Hello, World!"; }

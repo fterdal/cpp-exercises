@@ -8,61 +8,57 @@ SingleLinkedList::SingleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
 
 // SingleLinkedList destructor (stub - doesn't free memory)
 SingleLinkedList::~SingleLinkedList() {
-    // TODO: Implement proper cleanup
+  // TODO: Implement proper cleanup
 }
 
 // Append a node to the end of the list (stub)
 void SingleLinkedList::Append(int value) {
-    // TODO: Implement
+  // TODO: Implement
 }
 
 // Prepend a node to the beginning of the list (stub)
 void SingleLinkedList::Prepend(int value) {
-    // TODO: Implement
+  // TODO: Implement
 }
 
 // Delete the node at the beginning of the list (stub)
 void SingleLinkedList::DeleteHead() {
-    // TODO: Implement
+  // TODO: Implement
 }
 
 // Delete the node at the end of the list (stub)
 void SingleLinkedList::DeleteTail() {
-    // TODO: Implement
+  // TODO: Implement
 }
 
 // Print the contents of each node in order (stub)
 void SingleLinkedList::Print() const {
-    // TODO: Implement
+  // TODO: Implement
 }
 
 // Copy the list to a new SingleLinkedList and return it (stub)
 SingleLinkedList SingleLinkedList::Copy() const {
-    SingleLinkedList copy;
-    // TODO: Implement
-    return copy;
+  SingleLinkedList copy;
+  // TODO: Implement
+  return copy;
 }
 
 // Helper methods for testing
 
-int SingleLinkedList::GetSize() const {
-    return size;
-}
+int SingleLinkedList::GetSize() const { return size; }
 
 int SingleLinkedList::GetHead() const {
-    if (head != nullptr) {
-        return head->data;
-    }
-    return -1; // Stub: return -1 for empty list
+  if (head != nullptr) {
+    return head->data;
+  }
+  return -1; // Stub: return -1 for empty list
 }
 
 int SingleLinkedList::GetTail() const {
-    if (tail != nullptr) {
-        return tail->data;
-    }
-    return -1; // Stub: return -1 for empty list
+  if (tail != nullptr) {
+    return tail->data;
+  }
+  return -1; // Stub: return -1 for empty list
 }
 
-bool SingleLinkedList::IsEmpty() const {
-    return size == 0;
-}
+bool SingleLinkedList::IsEmpty() const { return size == 0; }
