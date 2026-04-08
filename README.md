@@ -56,6 +56,24 @@ cmake --build build/build/Release
 cd build/build/Release && ctest --output-on-failure
 ```
 
+## Pending Tests
+
+Tests are disabled by prefixing the test suite or test name with `DISABLED_` in the gtest `TEST()` macro. To enable a pending test, simply remove the `DISABLED_` prefix:
+
+```cpp
+// Disabled (pending)
+TEST(DISABLED_AppendTests, AppendToEmptyList) { ... }
+
+// Enabled
+TEST(AppendTests, AppendToEmptyList) { ... }
+```
+
+You can also disable a single test within an active suite:
+
+```cpp
+TEST(AppendTests, DISABLED_AppendToEmptyList) { ... }
+```
+
 ## Project Structure
 
 ```
