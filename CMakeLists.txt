@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(cpp_exercises CXX)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -22,3 +23,10 @@ target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
 
 include(GoogleTest)
 gtest_discover_tests(tests)
+
+# Symlink compile_commands.json to project root for linter support
+add_custom_target(symlink_compile_commands ALL
+    COMMAND ${CMAKE_COMMAND} -E create_symlink
+        ${CMAKE_BINARY_DIR}/compile_commands.json
+        ${CMAKE_SOURCE_DIR}/compile_commands.json
+)
