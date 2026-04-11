@@ -1,4 +1,5 @@
 #include "single_linked_list.h"
+#include <iostream>
 
 // Node constructor
 Node::Node(int value) : data(value), next(nullptr) {}
@@ -13,10 +14,9 @@ SingleLinkedList::~SingleLinkedList() {
 
 // Append a node to the end of the list (stub)
 void SingleLinkedList::Append(int value) {
-  // TODO: Implement
-  if (!this->head) {
+  if (this->IsEmpty()) {
     this->head = new Node(value);
-    this->tail = new Node(value);
+    this->tail = this->head;
   } else {
     this->tail->next = new Node(value);
     this->tail = this->tail->next;
@@ -26,10 +26,9 @@ void SingleLinkedList::Append(int value) {
 
 // Prepend a node to the beginning of the list (stub)
 void SingleLinkedList::Prepend(int value) {
-  // TODO: Implement
-  if (!this->head) {
+  if (this->IsEmpty()) {
     this->head = new Node(value);
-    this->tail = new Node(value);
+    this->tail = this->head;
   } else {
     Node *newHead = new Node(value);
     newHead->next = this->head;
@@ -41,22 +40,56 @@ void SingleLinkedList::Prepend(int value) {
 // Delete the node at the beginning of the list (stub)
 void SingleLinkedList::DeleteHead() {
   // TODO: Implement
+  if (this->IsEmpty()) {
+    return;
+  } else {
+    Node *headNext = this->head->next;
+    delete this->head;
+    this->head = headNext;
+    this->size--;
+  }
 }
 
 // Delete the node at the end of the list (stub)
 void SingleLinkedList::DeleteTail() {
-  // TODO: Implement
+  if (this->IsEmpty()) {
+    return;
+  } else if (!this->head->next) {
+    delete this->head;
+    this->size--;
+    return;
+  }
+  Node *ptr = this->head;
+  while (ptr->next->next) {
+    ptr = ptr->next;
+  }
+  delete ptr->next;
+  this->tail = ptr;
+  this->size--;
 }
 
 // Print the contents of each node in order (stub)
 void SingleLinkedList::Print() const {
-  // TODO: Implement
+  if (!this->head) {
+    std::cout << "empty\n";
+  } else {
+    Node *ptr = this->head;
+    while (ptr) {
+      std::cout << ptr->data << " -> ";
+      ptr = ptr->next;
+    }
+    std::cout << "end\n";
+  }
 }
 
 // Copy the list to a new SingleLinkedList and return it (stub)
 SingleLinkedList SingleLinkedList::Copy() const {
   SingleLinkedList copy;
-  // TODO: Implement
+  Node *ptr = this->head;
+  while (ptr) {
+    copy.Append(ptr->data);
+    ptr = ptr->next;
+  }
   return copy;
 }
 
@@ -79,3 +112,5 @@ int SingleLinkedList::GetTail() const {
 }
 
 bool SingleLinkedList::IsEmpty() const { return size == 0; }
+
+bool SingleLinkedList::HeadIsTail() const { return head == tail; }

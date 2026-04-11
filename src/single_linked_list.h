@@ -29,6 +29,7 @@ public:
   int GetHead() const;
   int GetTail() const;
   bool IsEmpty() const;
+  bool HeadIsTail() const;
 };
 
 #endif // SINGLE_LINKED_LIST_H

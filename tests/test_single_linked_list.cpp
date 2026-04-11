@@ -15,6 +15,13 @@ TEST(AppendTests, AppendToEmptyList) {
   EXPECT_FALSE(list.IsEmpty());
 }
 
+TEST(AppendTests, AppendSingleElementHeadAndTailAreSameNode) {
+  SingleLinkedList list;
+  list.Append(42);
+
+  EXPECT_TRUE(list.HeadIsTail());
+}
+
 TEST(AppendTests, AppendMultipleElements) {
   SingleLinkedList list;
   list.Append(1);
@@ -84,7 +91,7 @@ TEST(PrependTests, PrependUpdatesOnlyHead) {
 // DeleteHead Tests
 // ============================================================================
 
-TEST(DISABLED_DeleteHeadTests, DeleteHeadFromSingleElement) {
+TEST(DeleteHeadTests, DeleteHeadFromSingleElement) {
   SingleLinkedList list;
   list.Append(42);
 
@@ -94,7 +101,7 @@ TEST(DISABLED_DeleteHeadTests, DeleteHeadFromSingleElement) {
   EXPECT_EQ(list.GetSize(), 0);
 }
 
-TEST(DISABLED_DeleteHeadTests, DeleteHeadFromMultipleElements) {
+TEST(DeleteHeadTests, DeleteHeadFromMultipleElements) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
@@ -107,7 +114,7 @@ TEST(DISABLED_DeleteHeadTests, DeleteHeadFromMultipleElements) {
   EXPECT_EQ(list.GetTail(), 3);
 }
 
-TEST(DISABLED_DeleteHeadTests, DeleteHeadFromEmptyList) {
+TEST(DeleteHeadTests, DeleteHeadFromEmptyList) {
   SingleLinkedList list;
 
   // Should not crash - just a no-op
@@ -119,7 +126,7 @@ TEST(DISABLED_DeleteHeadTests, DeleteHeadFromEmptyList) {
 // DeleteTail Tests
 // ============================================================================
 
-TEST(DISABLED_DeleteTailTests, DeleteTailFromSingleElement) {
+TEST(DeleteTailTests, DeleteTailFromSingleElement) {
   SingleLinkedList list;
   list.Append(42);
 
@@ -129,7 +136,7 @@ TEST(DISABLED_DeleteTailTests, DeleteTailFromSingleElement) {
   EXPECT_EQ(list.GetSize(), 0);
 }
 
-TEST(DISABLED_DeleteTailTests, DeleteTailFromMultipleElements) {
+TEST(DeleteTailTests, DeleteTailFromMultipleElements) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
@@ -142,7 +149,7 @@ TEST(DISABLED_DeleteTailTests, DeleteTailFromMultipleElements) {
   EXPECT_EQ(list.GetTail(), 2);
 }
 
-TEST(DISABLED_DeleteTailTests, DeleteTailFromEmptyList) {
+TEST(DeleteTailTests, DeleteTailFromEmptyList) {
   SingleLinkedList list;
 
   // Should not crash - just a no-op
@@ -154,7 +161,7 @@ TEST(DISABLED_DeleteTailTests, DeleteTailFromEmptyList) {
 // Print Tests
 // ============================================================================
 
-TEST(DISABLED_PrintTests, PrintEmptyList) {
+TEST(PrintTests, PrintEmptyList) {
   SingleLinkedList list;
 
   testing::internal::CaptureStdout();
@@ -167,7 +174,7 @@ TEST(DISABLED_PrintTests, PrintEmptyList) {
               output == "\n");
 }
 
-TEST(DISABLED_PrintTests, PrintSingleElement) {
+TEST(PrintTests, PrintSingleElement) {
   SingleLinkedList list;
   list.Append(42);
 
@@ -179,7 +186,7 @@ TEST(DISABLED_PrintTests, PrintSingleElement) {
   EXPECT_NE(output.find("42"), std::string::npos);
 }
 
-TEST(DISABLED_PrintTests, PrintMultipleElements) {
+TEST(PrintTests, PrintMultipleElements) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
@@ -206,7 +213,7 @@ TEST(DISABLED_PrintTests, PrintMultipleElements) {
 // Copy Tests
 // ============================================================================
 
-TEST(DISABLED_CopyTests, CopyEmptyList) {
+TEST(CopyTests, CopyEmptyList) {
   SingleLinkedList list;
 
   SingleLinkedList copy = list.Copy();
@@ -215,7 +222,7 @@ TEST(DISABLED_CopyTests, CopyEmptyList) {
   EXPECT_EQ(copy.GetSize(), 0);
 }
 
-TEST(DISABLED_CopyTests, CopySingleElement) {
+TEST(CopyTests, CopySingleElement) {
   SingleLinkedList list;
   list.Append(42);
 
@@ -226,7 +233,7 @@ TEST(DISABLED_CopyTests, CopySingleElement) {
   EXPECT_EQ(copy.GetTail(), 42);
 }
 
-TEST(DISABLED_CopyTests, CopyMultipleElements) {
+TEST(CopyTests, CopyMultipleElements) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
@@ -239,7 +246,7 @@ TEST(DISABLED_CopyTests, CopyMultipleElements) {
   EXPECT_EQ(copy.GetTail(), 3);
 }
 
-TEST(DISABLED_CopyTests, CopyIsDeepCopy) {
+TEST(CopyTests, CopyIsDeepCopy) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
@@ -266,7 +273,7 @@ TEST(DISABLED_CopyTests, CopyIsDeepCopy) {
 // Mixed Operations Tests
 // ============================================================================
 
-TEST(DISABLED_MixedOperationsTests, AppendAndPrependCombined) {
+TEST(MixedOperationsTests, AppendAndPrependCombined) {
   SingleLinkedList list;
   list.Append(2);  // List: 2
   list.Prepend(1); // List: 1 -> 2
@@ -278,7 +285,7 @@ TEST(DISABLED_MixedOperationsTests, AppendAndPrependCombined) {
   EXPECT_EQ(list.GetTail(), 3);
 }
 
-TEST(DISABLED_MixedOperationsTests, DeleteAfterMultipleOperations) {
+TEST(MixedOperationsTests, DeleteAfterMultipleOperations) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
