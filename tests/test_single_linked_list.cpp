@@ -5,7 +5,7 @@
 // Append Tests
 // ============================================================================
 
-TEST(DISABLED_AppendTests, AppendToEmptyList) {
+TEST(AppendTests, AppendToEmptyList) {
   SingleLinkedList list;
   list.Append(42);
 
@@ -15,7 +15,7 @@ TEST(DISABLED_AppendTests, AppendToEmptyList) {
   EXPECT_FALSE(list.IsEmpty());
 }
 
-TEST(DISABLED_AppendTests, AppendMultipleElements) {
+TEST(AppendTests, AppendMultipleElements) {
   SingleLinkedList list;
   list.Append(1);
   list.Append(2);
@@ -26,7 +26,7 @@ TEST(DISABLED_AppendTests, AppendMultipleElements) {
   EXPECT_EQ(list.GetTail(), 3);
 }
 
-TEST(DISABLED_AppendTests, AppendUpdatesOnlyTail) {
+TEST(AppendTests, AppendUpdatesOnlyTail) {
   SingleLinkedList list;
   list.Append(10);
   int originalHead = list.GetHead();
@@ -44,7 +44,7 @@ TEST(DISABLED_AppendTests, AppendUpdatesOnlyTail) {
 // Prepend Tests
 // ============================================================================
 
-TEST(DISABLED_PrependTests, PrependToEmptyList) {
+TEST(PrependTests, PrependToEmptyList) {
   SingleLinkedList list;
   list.Prepend(42);
 
@@ -54,7 +54,7 @@ TEST(DISABLED_PrependTests, PrependToEmptyList) {
   EXPECT_FALSE(list.IsEmpty());
 }
 
-TEST(DISABLED_PrependTests, PrependMultipleElements) {
+TEST(PrependTests, PrependMultipleElements) {
   SingleLinkedList list;
   list.Prepend(3);
   list.Prepend(2);
@@ -66,7 +66,7 @@ TEST(DISABLED_PrependTests, PrependMultipleElements) {
   EXPECT_EQ(list.GetTail(), 3);
 }
 
-TEST(DISABLED_PrependTests, PrependUpdatesOnlyHead) {
+TEST(PrependTests, PrependUpdatesOnlyHead) {
   SingleLinkedList list;
   list.Prepend(10);
   int originalTail = list.GetTail();

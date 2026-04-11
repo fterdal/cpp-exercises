@@ -14,11 +14,28 @@ SingleLinkedList::~SingleLinkedList() {
 // Append a node to the end of the list (stub)
 void SingleLinkedList::Append(int value) {
   // TODO: Implement
+  if (!this->head) {
+    this->head = new Node(value);
+    this->tail = new Node(value);
+  } else {
+    this->tail->next = new Node(value);
+    this->tail = this->tail->next;
+  }
+  this->size++;
 }
 
 // Prepend a node to the beginning of the list (stub)
 void SingleLinkedList::Prepend(int value) {
   // TODO: Implement
+  if (!this->head) {
+    this->head = new Node(value);
+    this->tail = new Node(value);
+  } else {
+    Node *newHead = new Node(value);
+    newHead->next = this->head;
+    this->head = newHead;
+  }
+  this->size++;
 }
 
 // Delete the node at the beginning of the list (stub)

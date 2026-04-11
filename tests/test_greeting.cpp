@@ -11,7 +11,7 @@ TEST(GreetingTest, ReturnsHelloWorld) {
 }
 
 // Test that the main executable outputs "Hello, World!" and exits successfully
-TEST(DISABLED_MainExecutableTest, OutputsHelloWorldAndExitsSuccessfully) {
+TEST(MainExecutableTest, OutputsHelloWorldAndExitsSuccessfully) {
   // Run the main executable and capture output
   std::array<char, 128> buffer;
   std::string result;
