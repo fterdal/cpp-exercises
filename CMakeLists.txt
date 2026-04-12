@@ -13,11 +13,13 @@ add_executable(main src/main.cpp src/greeting.cpp)
 
 # Test executable
 enable_testing()
-add_executable(tests 
-    tests/test_greeting.cpp 
-    tests/test_single_linked_list.cpp 
-    src/greeting.cpp 
-    src/single_linked_list.cpp)
+add_executable(tests
+    tests/test_greeting.cpp
+    tests/test_single_linked_list.cpp
+    tests/test_binary_search_tree.cpp
+    src/greeting.cpp
+    src/single_linked_list.cpp
+    src/binary_search_tree.cpp)
 target_link_libraries(tests GTest::gtest GTest::gtest_main)
 target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
 

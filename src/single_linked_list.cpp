@@ -9,7 +9,9 @@ SingleLinkedList::SingleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
 
 // SingleLinkedList destructor (stub - doesn't free memory)
 SingleLinkedList::~SingleLinkedList() {
-  // TODO: Implement proper cleanup
+  while (!this->IsEmpty()) {
+    this->DeleteHead();
+  }
 }
 
 // Append a node to the end of the list (stub)
@@ -44,6 +46,9 @@ void SingleLinkedList::DeleteHead() {
     return;
   } else {
     Node *headNext = this->head->next;
+    if (this->head == this->tail) {
+      this->tail = nullptr;
+    }
     delete this->head;
     this->head = headNext;
     this->size--;
@@ -56,7 +61,9 @@ void SingleLinkedList::DeleteTail() {
     return;
   } else if (!this->head->next) {
     delete this->head;
-    this->size--;
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->size = 0;
     return;
   }
   Node *ptr = this->head;
