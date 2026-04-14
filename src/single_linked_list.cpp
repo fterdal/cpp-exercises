@@ -7,7 +7,7 @@ Node::Node(int value) : data(value), next(nullptr) {}
 // SingleLinkedList constructor
 SingleLinkedList::SingleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
 
-// SingleLinkedList destructor (stub - doesn't free memory)
+// SingleLinkedList destructor
 SingleLinkedList::~SingleLinkedList() {
   while (!this->IsEmpty()) {
     this->DeleteHead();
@@ -71,6 +71,7 @@ void SingleLinkedList::DeleteTail() {
     ptr = ptr->next;
   }
   delete ptr->next;
+  ptr->next = nullptr;
   this->tail = ptr;
   this->size--;
 }

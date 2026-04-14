@@ -13,11 +13,11 @@
 ### DeleteTail
 
 - Fixed: Single-element case now sets both `head` and `tail` to `nullptr`.
-- **Still open:** Multi-element case — after `delete ptr->next`, need to set `ptr->next = nullptr` so that `tail->next` isn't a dangling pointer.
+- Fixed: Multi-element case now sets `ptr->next = nullptr` after delete. Looks good.
 
 ### Destructor
 
-- **Still open:** Uses `if` instead of `while` — only deletes one node. Needs to loop until the list is empty.
+- Fixed: Now uses `while` loop to delete all nodes. Looks good.
 
 ### Copy / Print
 
