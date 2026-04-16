@@ -6,7 +6,7 @@
 // Insert Tests
 // ============================================================================
 
-TEST(DISABLED_InsertTests, InsertIntoEmptyTree) {
+TEST(InsertTests, InsertIntoEmptyTree) {
   BinarySearchTree tree;
   tree.Insert(10);
 
@@ -15,7 +15,7 @@ TEST(DISABLED_InsertTests, InsertIntoEmptyTree) {
   EXPECT_TRUE(tree.Contains(10));
 }
 
-TEST(DISABLED_InsertTests, InsertMultipleElements) {
+TEST(InsertTests, InsertMultipleElements) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(5);
@@ -27,7 +27,7 @@ TEST(DISABLED_InsertTests, InsertMultipleElements) {
   EXPECT_TRUE(tree.Contains(15));
 }
 
-TEST(DISABLED_InsertTests, InsertDuplicateElement) {
+TEST(InsertTests, InsertDuplicateElement) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(10);
@@ -36,7 +36,7 @@ TEST(DISABLED_InsertTests, InsertDuplicateElement) {
   EXPECT_EQ(tree.GetSize(), 1);
 }
 
-TEST(DISABLED_InsertTests, InsertMaintainsBSTProperty) {
+TEST(InsertTests, InsertMaintainsBSTProperty) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(5);
@@ -52,13 +52,13 @@ TEST(DISABLED_InsertTests, InsertMaintainsBSTProperty) {
 // Contains Tests
 // ============================================================================
 
-TEST(DISABLED_ContainsTests, ContainsInEmptyTree) {
+TEST(ContainsTests, ContainsInEmptyTree) {
   BinarySearchTree tree;
 
   EXPECT_FALSE(tree.Contains(10));
 }
 
-TEST(DISABLED_ContainsTests, ContainsExistingElement) {
+TEST(ContainsTests, ContainsExistingElement) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(5);
@@ -69,7 +69,7 @@ TEST(DISABLED_ContainsTests, ContainsExistingElement) {
   EXPECT_TRUE(tree.Contains(15));
 }
 
-TEST(DISABLED_ContainsTests, ContainsNonExistingElement) {
+TEST(ContainsTests, ContainsNonExistingElement) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(5);

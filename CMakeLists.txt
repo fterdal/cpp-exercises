@@ -20,7 +20,9 @@ add_executable(tests
     src/greeting.cpp
     src/single_linked_list.cpp
     src/binary_search_tree.cpp)
-target_link_libraries(tests GTest::gtest GTest::gtest_main)
+# gtest-pretty: modern test output (drop-in replacement for GTest::gtest_main)
+add_subdirectory($ENV{HOME}/code/gtest-pretty gtest-pretty)
+target_link_libraries(tests GTest::gtest gtest_pretty_main)
 target_include_directories(tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
 
 include(GoogleTest)

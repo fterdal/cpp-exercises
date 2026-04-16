@@ -38,33 +38,28 @@ run: build
 
 # Build and run tests
 test: build
-	@echo "Running tests..."
-	cd $(BUILD_PATH) && ctest --output-on-failure
+	@./$(BUILD_PATH)/tests
 
 # Run tests in watch mode (auto-rerun on file changes)
 # Requires fswatch: brew install fswatch
 test-watch: build
-	@echo "Running tests in watch mode..."
 	@echo "Watching for changes in: $(WATCH_FILES)"
 	@echo "Press Ctrl+C to stop"
 	@echo ""
 	@# Run tests once initially
-	@cd $(BUILD_PATH) && ctest --output-on-failure || true
+	@./$(BUILD_PATH)/tests || true
 	@echo ""
 	@echo "Watching for changes..."
 	@fswatch -o $(WATCH_FILES) | while read; do \
 		clear; \
-		echo "Change detected, rebuilding and running tests..."; \
-		echo ""; \
-		cmake --build $(BUILD_PATH) && cd $(BUILD_PATH) && ctest --output-on-failure || true; \
+		cmake --build $(BUILD_PATH) && ./$(BUILD_PATH)/tests || true; \
 		echo ""; \
 		echo "Watching for changes..."; \
 	done
 
 # Run a specific test (usage: make test-one TEST=TestName)
 test-one: build
-	@echo "Running test: $(TEST)"
-	cd $(BUILD_PATH) && ctest --output-on-failure -R "$(TEST)"
+	@./$(BUILD_PATH)/tests --gtest_filter="$(TEST)"
 
 # Clean build artifacts
 clean:
@@ -83,7 +78,7 @@ help:
 	@echo "  make run         - Build and run the main executable"
 	@echo "  make test        - Build and run all tests"
 	@echo "  make test-watch  - Run tests in watch mode (requires fswatch)"
-	@echo "  make test-one TEST=Name - Run a specific test by name"
+	@echo "  make test-one TEST=Name - Run a specific test by name (supports gtest filter patterns)"
 	@echo "  make clean       - Remove build directory"
 	@echo "  make rebuild     - Clean and rebuild from scratch"
 	@echo "  make help        - Show this help message"
