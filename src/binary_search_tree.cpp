@@ -13,6 +13,47 @@ BinarySearchTree::~BinarySearchTree() {
   // TODO: Implement proper cleanup
 }
 
+// HELPER FUNCTIONS
+std::string sortedNodes(BSTNode *node, std::string acc) {
+  if (!node) { return acc; }
+  std::string left = "";
+  if (node->left) {
+    left = sortedNodes(node->left, acc);
+  }
+  std::string right = "";
+  if (node->right) {
+    right = sortedNodes(node->right, acc);
+  }
+  std::string leftAndRoot = left.append(std::to_string(node->data)).append(" ");
+  return leftAndRoot.append(right);
+}
+
+std::string trimFinalWhitespace(std::string string) {
+  int length = string.length();
+  if (!length) return string;
+  if (string[length-1] == ' ') {
+    return string.substr(0, length-1);
+  } else {
+    return string;
+  }
+}
+
+// TODO: Create a helper function for calcHeight
+int heightHelper(BSTNode *node) {
+  std::cout << "heightHelper node" << node->data << "\n";
+  if (!node) return 0;
+  int leftHeight = 0;
+  int rightHeight = 0;
+  if (node->left) {
+    leftHeight = heightHelper(node->left);
+  }
+  if (node->right) {
+    rightHeight = heightHelper(node->right);
+  }
+  if (leftHeight > rightHeight) { return 1 + leftHeight; }
+  return 1 + rightHeight;
+}
+
 void BinarySearchTree::Insert(int value) {
   if (this->IsEmpty()) {
     this->root = new BSTNode(value);
@@ -59,52 +100,38 @@ void BinarySearchTree::Remove(int value) {
 }
 
 int BinarySearchTree::GetMin() const {
-  // TODO: Implement
+  if (this->IsEmpty()) { return -1; }
+  BSTNode *nodePtr = this->root;
+  while (nodePtr) {
+    if (!nodePtr->left) { return nodePtr->data; }
+    nodePtr = nodePtr->left;
+  }
   return -1;
 }
 
 int BinarySearchTree::GetMax() const {
-  // TODO: Implement
+  if (this->IsEmpty()) { return -1; }
+  BSTNode *nodePtr = this->root;
+  while (nodePtr) {
+    if (!nodePtr->right) { return nodePtr->data; }
+    nodePtr = nodePtr->right;
+  }
   return -1;
 }
 
 int BinarySearchTree::GetHeight() const {
-  // TODO: Implement
-  return -1;
+  if (this->IsEmpty()) { return -1; }
+  return heightHelper(this->root) - 1;
 }
 
 int BinarySearchTree::GetSize() const { return size; }
 
 bool BinarySearchTree::IsEmpty() const { return size == 0; }
 
-// Helper function that takes in a node and returns an array in ascending
-// sorted order, traverses recursively in-order
-std::string sortedNodes(BSTNode *node, std::string acc) {
-  if (!node) { return acc; }
-  std::string left = "";
-  if (node->left) {
-    left = sortedNodes(node->left, acc);
-  }
-  std::string right = "";
-  if (node->right) {
-    right = sortedNodes(node->right, acc);
-  }
-  std::string leftAndRoot = left.append(std::to_string(node->data)).append(" ");
-  return leftAndRoot.append(right);
-}
-
-std::string trimFinalWhitespace(std::string string) {
-  int length = string.length();
-  if (!length) return string;
-  if (string[length-1] == ' ') {
-    return string.substr(0, length-1);
-  } else {
-    return string;
-  }
-}
 
 std::string BinarySearchTree::InOrder() const {
   if (this->IsEmpty()) { return ""; }
   return trimFinalWhitespace(sortedNodes(this->root, ""));
 }
+
 

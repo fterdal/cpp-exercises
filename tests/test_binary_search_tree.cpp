@@ -92,7 +92,7 @@ TEST(DISABLED_MinMaxTests, MinAndMaxOfSingleElement) {
   EXPECT_EQ(tree.GetMax(), 42);
 }
 
-TEST(DISABLED_MinMaxTests, MinAndMaxOfMultipleElements) {
+TEST(MinMaxTests, MinAndMaxOfMultipleElements) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(5);
@@ -104,7 +104,7 @@ TEST(DISABLED_MinMaxTests, MinAndMaxOfMultipleElements) {
   EXPECT_EQ(tree.GetMax(), 20);
 }
 
-TEST(DISABLED_MinMaxTests, MinAndMaxWithLeftSkewedTree) {
+TEST(MinMaxTests, MinAndMaxWithLeftSkewedTree) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(8);
@@ -115,7 +115,7 @@ TEST(DISABLED_MinMaxTests, MinAndMaxWithLeftSkewedTree) {
   EXPECT_EQ(tree.GetMax(), 10);
 }
 
-TEST(DISABLED_MinMaxTests, MinAndMaxWithRightSkewedTree) {
+TEST(MinMaxTests, MinAndMaxWithRightSkewedTree) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(12);
@@ -130,20 +130,20 @@ TEST(DISABLED_MinMaxTests, MinAndMaxWithRightSkewedTree) {
 // GetHeight Tests
 // ============================================================================
 
-TEST(DISABLED_HeightTests, HeightOfEmptyTree) {
+TEST(HeightTests, HeightOfEmptyTree) {
   BinarySearchTree tree;
 
   EXPECT_EQ(tree.GetHeight(), -1);
 }
 
-TEST(DISABLED_HeightTests, HeightOfSingleElement) {
+TEST(HeightTests, HeightOfSingleElement) {
   BinarySearchTree tree;
   tree.Insert(10);
 
   EXPECT_EQ(tree.GetHeight(), 0);
 }
 
-TEST(DISABLED_HeightTests, HeightOfBalancedTree) {
+TEST(HeightTests, HeightOfBalancedTree) {
   BinarySearchTree tree;
   tree.Insert(10);
   tree.Insert(5);
