@@ -38,7 +38,6 @@ std::string trimFinalWhitespace(std::string string) {
   }
 }
 
-// TODO: Create a helper function for calcHeight
 int heightHelper(BSTNode *node) {
   std::cout << "heightHelper node" << node->data << "\n";
   if (!node) return 0;
@@ -95,8 +94,57 @@ bool BinarySearchTree::Contains(int value) const {
   return false;
 }
 
+
+
 void BinarySearchTree::Remove(int value) {
-  // TODO: Implement
+  // Strategy: Loop with current and previous, where previous is always the parent of
+  // current. When current matches value, set previous->left/right to nullptr and delete current.
+  BSTNode *prev = nullptr;
+  BSTNode *curr = this->root;
+  while (curr) {
+    if (curr->data == value) {
+      // Found a match!
+      if (prev) {
+        BSTNode *currLeft = curr->left;
+        BSTNode *currRight = curr->right;
+
+        if (!currLeft && !currRight) {
+          // CASE 1: current is a leaf - no children
+          if (prev->right == curr) { prev->right = nullptr; }
+          else if (prev->left == curr) { prev->left = nullptr; }
+        } else if (currLeft && currRight) {
+          // CASE 2: current has two children, must rotate
+          // TODO
+          return;
+        } else if (currLeft) {
+          // CASE 3: Only left child
+          if (prev->right == curr) { prev->right = currLeft; }
+          else if (prev->left == curr) { prev->left = currLeft; }
+        } else {
+          // CASE 4: Only right child
+          if (prev->right == curr) { prev->right = currRight; }
+          else if (prev->left == curr) { prev->left = currRight; }
+        }
+      } else {
+        // TODO. In this case, we're deleting the root.
+        delete curr;
+        this->root = nullptr;
+        this->size = 0;
+      }
+      // Delete the current node and decrement the size
+      delete curr;
+      this->size--;
+      return;
+    } else {
+      if (value < curr->data) {
+        prev = curr;
+        curr = curr->left;
+      } else {
+        prev = curr;
+        curr = curr->right;
+      }
+    }
+  }
 }
 
 int BinarySearchTree::GetMin() const {

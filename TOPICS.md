@@ -19,3 +19,10 @@
 - Recursion patterns (tree traversals, divide and conquer)
 - References vs pointers (`&` vs `*`)
 - `const` correctness (const methods, const references, const pointers)
+
+Jared Notes:
+- C++ Primer Book for learning
+- We can find modern C++ patterns in GFX bc of third party libraries, also look at Firefox source docs to find which versions they're using. Maybe ask Firefox Developers in Matrix.
+- xpcom in source docs: https://firefox-source-docs.mozilla.org/xpcom/stringguide.html
+- Consider asking Claude to make a mach plugin for gtest pretty. Look for mach docs on firefox source: https://firefox-source-docs.mozilla.org/mach/index.html 
+
